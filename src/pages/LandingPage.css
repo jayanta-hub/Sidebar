@@ -1,0 +1,62 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.wrapper {
+  position: relative;
+  height: 60vh;
+  background-color: blueviolet;
+}
+.wrapper::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  height: 20vh;
+  width: 100%;
+}
+
+.custom-shape-divider-bottom-1691069786 {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+  transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1691069786 svg {
+  position: relative;
+  display: block;
+  width: calc(152% + 1.3px);
+  height: 123px;
+}
+
+.custom-shape-divider-bottom-1691069786 .shape-fill {
+  fill: #ffffff;
+}
+/* Add styles for the centered div */
+.centered-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  
+
+}
+
+/* Add some basic styling for the user list */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin: 5px 0;
+}
