@@ -87,12 +87,21 @@ const Sidebar = () => {
               >
                 <Typography variant="subtitle1">{item?.name}</Typography>
                 {item?.iconIsVisible && (
-                  <div className="sidebarIcon">
-                    <KeyboardArrowRightIcon
-                      fontSize="medium"
-                      style={{ color: "black", opacity: 0.3 }}
-                    />
-                  </div>
+                  <>
+                    <div className="sidebarIcon">
+                      {/* <div
+                        style={{
+                          height: "30px",
+                          width: "20px",
+                          backgroundColor: "red",
+                        }}
+                      ></div> */}
+                      <KeyboardArrowRightIcon
+                        fontSize="medium"
+                        style={{ color: "black", opacity: 0.3 }}
+                      />
+                    </div>
+                  </>
                 )}
               </div>
               {menuItem.length - 1 !== index && <div className="divider" />}
