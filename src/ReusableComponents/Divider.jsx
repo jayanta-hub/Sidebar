@@ -1,14 +1,14 @@
 import React from "react";
 
-const Divider = () => {
+const Divider = ({ width = "80%", opacity = 0.5 }) => {
   return (
     <div
       style={{
         display: "flex",
         flexDirection: "row",
         borderBottom: "1px solid #7E7E7E",
-        opacity: "0.3",
-        width: "80%",
+        opacity: opacity,
+        width: width,
         alignSelf: "center",
         marginTop: "10px",
         marginBottom: "10px",

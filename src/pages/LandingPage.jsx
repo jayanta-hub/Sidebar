@@ -6,6 +6,8 @@ import {
   getUserInformation,
   postSelectedUser,
 } from "../application/store/actions/timeLine";
+import { Avatar, Typography } from "@mui/material";
+import Divider from "../ReusableComponents/Divider";
 const LandingPage = (props) => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
@@ -50,32 +52,43 @@ const LandingPage = (props) => {
       <div className="centered-div">
         <div
           style={{
-            padding: "40px",
             backgroundColor: "white",
             borderRadius: "20px",
-            paddingLeft: "35px",
-            paddingRight: "35px",
             zIndex: 100,
             width: "40%",
+            boxShadow: "1px 2px 9px #00000033",
           }}
         >
           <div
             style={{
-              backgroundColor: "lightgray",
+              backgroundColor: "#F3F3F3",
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
+              width: "100%",
+              height: "100px",
+              borderTopLeftRadius: "20px",
+              borderTopRightRadius: "20px",
             }}
           >
-            <h2>Select an account</h2>
+            <Typography
+              variant="subtitle1"
+              style={{
+                fontWeight: "bold",
+              }}
+            >
+              Select an account
+            </Typography>
           </div>
           <div
             style={{
+              paddingLeft: "35px",
+              paddingRight: "35px",
               width: "100%",
             }}
           >
             {Userdata && Userdata.length ? (
-              Userdata.map((user) => (
+              Userdata.map((user, ind) => (
                 <div key={user?.id} onClick={() => onClickHandler(user)}>
                   <div
                     key={user?.id}
@@ -84,18 +97,30 @@ const LandingPage = (props) => {
                       marginTop: "10px",
                       justifyContent: "flex-start",
                       alignItems: "center",
+                      cursor: "pointer",
+                      paddingBottom: ind === Userdata.length - 1 ? "10px" : 0,
                     }}
                   >
-                    <img src={user.profilepicture} height={"25px"} />
-                    <h6 style={{ marginLeft: "10px" }}>{user.name}</h6>
+                    <Avatar
+                      alt="Remy Sharp"
+                      src={user?.profilepicture}
+                      sx={{ width: 30, height: 30 }}
+                    />
+                    <Typography
+                      variant="subtitle1"
+                      style={{
+                        fontWeight: "lighter",
+                        opacity: "0.8 ",
+                        fontSize: "16px",
+                        marginLeft: "10px",
+                      }}
+                    >
+                      {user?.name}
+                    </Typography>
                   </div>
-                  <hr
-                    style={{
-                      height: "1px",
-                      backgroundColor: "black",
-                      marginTop: "8px",
-                    }}
-                  />
+                  {ind !== Userdata.length - 1 && (
+                    <Divider width="100%" opacity="0.3" />
+                  )}
                 </div>
               ))
             ) : (

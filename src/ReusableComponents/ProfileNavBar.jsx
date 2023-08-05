@@ -157,7 +157,7 @@ const ProfileNavBar = ({
             .map((info, index) => {
               return (
                 <>
-                  <Divider />
+                  <Divider width="80%" opacity="0.3" />
                   <div
                     onClick={() => {
                       postSelectedUserinfo(info);
