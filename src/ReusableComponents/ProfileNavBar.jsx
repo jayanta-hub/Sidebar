@@ -150,45 +150,47 @@ const ProfileNavBar = ({
           >
             {data?.email}
           </Typography>
-          {userInformation?.users
-            .filter(
-              (item, index) => index <= 2 && item?.name !== selectedUser?.name,
-            )
-            .map((info, index) => {
-              return (
-                <>
-                  <Divider width="80%" opacity="0.3" />
-                  <div
-                    onClick={() => {
-                      postSelectedUserinfo(info);
-                    }}
-                    style={{
-                      display: "flex",
-                      flexDirection: "row",
-                      justifyContent: "center",
-                      alignItems: "center",
-                    }}
-                  >
-                    <Avatar
-                      alt="Remy Sharp"
-                      src={info?.profilepicture}
-                      sx={{ width: 30, height: 30 }}
-                    />
-                    <Typography
-                      variant="subtitle1"
+          {userInformation.isArray &&
+            userInformation?.users
+              .filter(
+                (item, index) =>
+                  index <= 2 && item?.name !== selectedUser?.name,
+              )
+              .map((info, index) => {
+                return (
+                  <>
+                    <Divider width="80%" opacity="0.3" />
+                    <div
+                      onClick={() => {
+                        postSelectedUserinfo(info);
+                      }}
                       style={{
-                        fontWeight: "lighter",
-                        opacity: "0.8 ",
-                        fontSize: "14px",
-                        marginLeft: "10px",
+                        display: "flex",
+                        flexDirection: "row",
+                        justifyContent: "center",
+                        alignItems: "center",
                       }}
                     >
-                      {info?.name}
-                    </Typography>
-                  </div>
-                </>
-              );
-            })}
+                      <Avatar
+                        alt="Remy Sharp"
+                        src={info?.profilepicture}
+                        sx={{ width: 30, height: 30 }}
+                      />
+                      <Typography
+                        variant="subtitle1"
+                        style={{
+                          fontWeight: "lighter",
+                          opacity: "0.8 ",
+                          fontSize: "14px",
+                          marginLeft: "10px",
+                        }}
+                      >
+                        {info?.name}
+                      </Typography>
+                    </div>
+                  </>
+                );
+              })}
           <Button
             onClick={() => navigate("/")}
             variant="contained"

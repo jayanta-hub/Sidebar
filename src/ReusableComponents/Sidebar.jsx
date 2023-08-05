@@ -1,40 +1,50 @@
 import { Typography } from "@mui/material";
 import React, { useState } from "react";
-import {
-  FaTh,
-  FaBars,
-  FaUserAlt,
-  FaRegChartBar,
-  FaCommentAlt,
-  FaShoppingBag,
-  FaThList,
-} from "react-icons/fa";
 import { NavLink } from "react-router-dom";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-const Sidebar = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const menuItem = [
+const Sidebar = () => {
+  const [menuItem, setmenuItem] = useState([
     {
+      id: 2,
       path: "/profile",
       name: "Profile",
-      icon: <FaTh />,
+      iconIsVisible: true,
     },
     {
+      id: 3,
       path: "/post",
       name: "Post",
-      icon: <FaUserAlt />,
+      iconIsVisible: true,
+      path: "/post",
+      name: "Post",
+      iconIsVisible: false,
     },
     {
+      id: 4,
       path: "/gallary",
       name: "Gallary",
-      icon: <FaRegChartBar />,
+      iconIsVisible: false,
     },
     {
+      id: 5,
       path: "/todo",
       name: "ToDo",
-      icon: <FaCommentAlt />,
+      iconIsVisible: false,
     },
-  ];
+  ]);
+  const onClickHanlder = (id) => {
+    let result = menuItem.map((item) => {
+      if (item.id === id) {
+        if (!item.iconIsVisible) {
+          item.iconIsVisible = !item.iconIsVisible;
+        }
+      } else {
+        item.iconIsVisible = false;
+      }
+      return item;
+    });
+    setmenuItem(result);
+  };
   return (
     <div
       className="container"
@@ -63,22 +73,30 @@ const Sidebar = ({ children }) => {
             style={{ width: "100%" }}
           >
             <div
-              style={{
-                display: "flex",
-                width: "100%",
-                justifyContent: "space-between",
+              onClick={() => {
+                onClickHanlder(item?.id);
               }}
-              className="link_text"
             >
-              <Typography variant="subtitle1">{item?.name}</Typography>
-              <div className="sidebarIcon">
-                <KeyboardArrowRightIcon
-                  fontSize="medium"
-                  style={{ color: "black", opacity: 0.3 }}
-                />
+              <div
+                style={{
+                  display: "flex",
+                  width: "100%",
+                  justifyContent: "space-between",
+                }}
+                className="link_text"
+              >
+                <Typography variant="subtitle1">{item?.name}</Typography>
+                {item?.iconIsVisible && (
+                  <div className="sidebarIcon">
+                    <KeyboardArrowRightIcon
+                      fontSize="medium"
+                      style={{ color: "black", opacity: 0.3 }}
+                    />
+                  </div>
+                )}
               </div>
+              {menuItem.length - 1 !== index && <div className="divider" />}
             </div>
-            {menuItem.length - 1 !== index && <div className="divider" />}
           </NavLink>
         ))}
       </div>
